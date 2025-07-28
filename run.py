@@ -11,4 +11,4 @@ api = FootballDataApi(API_KEY)
 person = api.getPersons(44)
 
 df = pd.json_normalize(person)
-print(df.head())
+print(df[["id", "name", "firstName", "lastName", "currentTeam.area.id"]])
