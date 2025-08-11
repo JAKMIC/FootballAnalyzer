@@ -1,0 +1,10 @@
+CREATE TABLE Areas 
+(
+	Id INT NOT NULL,
+	AreaName VARCHAR(100) NOT NULL,
+	CountryCode VARCHAR(10) NOT NULL,
+	Flag VARCHAR(200) NULL,
+	ParentAreaId INT NULL,
+	ParentAreaName VARCHAR(100) NULL,
+	PRIMARY KEY(ID)
+)

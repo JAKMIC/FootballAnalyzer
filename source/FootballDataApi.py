@@ -23,3 +23,11 @@ class FootballDataApi:
     def getPersons(self, playerId):
         endpoint = f"/persons/{str(playerId)}"
         return self._get(endpoint)
+
+    def getCompetitions(self, competition):
+        endpoint = f"/competitions/{competition}"
+        return self._get(endpoint)
+
+    def getAreas(self):
+        endpoint = f"/areas"
+        return self._get(endpoint)

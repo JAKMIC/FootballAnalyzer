@@ -1,14 +1,15 @@
 from source.FootballDataApi import FootballDataApi
-import pandas as pd
-
-# import requests as rq
-# url = "http://api.football-data.org/v4/competitions"
-# response = rq.get(url)
-# print(response.json())
+from database.FootballDatabase import FootbalDatabase
 
 API_KEY = 'a6f3fb2782994d2ca1e02bfa032c6566'
 api = FootballDataApi(API_KEY)
-person = api.getPersons(44)
 
-df = pd.json_normalize(person)
-print(df[["id", "name", "firstName", "lastName", "currentTeam.area.id"]])
+db = FootbalDatabase()
+db.connect()
+
+data = api.getAreas()
+areas = data["areas"]
+
+for area in areas:
+    db.execute("INSERT INTO Areas (Id, AreaName, CountryCode, Flag, ParentAreaId, ParentAreaName) VALUES (%s, %s, %s, %s, %s, %s) ON CONFLICT DO NOTHING",
+               (area["id"], area["name"], area["countryCode"], area["flag"], area["parentAreaId"], area["parentArea"]))
