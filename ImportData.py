@@ -4,8 +4,6 @@ from database.FootballDatabase import FootbalDatabase
 
 class ImportData:
     def __init__(self):
-        # self.API_KEY = 'a6f3fb2782994d2ca1e02bfa032c6566'
-        # self.api = FootballDataApi(self.API_KEY)
         self.db = FootbalDatabase()
         self.db.connect()
         self.API_KEY = self.getApiKey()
