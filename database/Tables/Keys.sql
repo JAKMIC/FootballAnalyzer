@@ -1,0 +1,5 @@
+CREATE TABLE Keys (
+    KeyName VARCHAR(100) NOT NULL,
+    KeyValue VARChAR(100) NOT NULL,
+    PRIMARY KEY(KeyName)
+)
