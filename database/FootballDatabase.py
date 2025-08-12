@@ -7,7 +7,7 @@ import os
 class FootbalDatabase:
 
     def __init__(self):
-        load_dotenv(dotenv_path="./EnvVars.env")
+        load_dotenv(dotenv_path="./vars.env")
         self.conn = None
         self.cursor = None
 
