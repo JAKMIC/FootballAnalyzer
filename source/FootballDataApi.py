@@ -31,3 +31,10 @@ class FootballDataApi:
     def getAreas(self):
         endpoint = f"/areas"
         return self._get(endpoint)
+
+    def getTeams(self, limit=0, offset=0):
+        if limit > 0:
+            endpoint = f"/teams?limit={limit}&offset={offset}"
+        else:
+            endpoint = f"/teams"
+        return self._get(endpoint)
