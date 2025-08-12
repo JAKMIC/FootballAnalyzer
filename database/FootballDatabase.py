@@ -1,26 +1,24 @@
 import psycopg2
 from psycopg2 import sql, OperationalError
+from dotenv import load_dotenv
+import os
 
 
 class FootbalDatabase:
 
     def __init__(self):
-        self.host = "localhost"
-        self.port = 5432
-        self.dbname = "footballanalizer"
-        self.user = "postgres"
-        self.password = "admin"
+        load_dotenv(dotenv_path="./EnvVars.env")
         self.conn = None
         self.cursor = None
 
     def connect(self):
         try:
             self.conn = psycopg2.connect(
-                host=self.host,
-                port=self.port,
-                dbname=self.dbname,
-                user=self.user,
-                password=self.password
+                host=os.getenv("DB_HOST"),
+                port=os.getenv("DB_PORT"),
+                dbname=os.getenv("DB_DATABASE"),
+                user=os.getenv("DB_USER"),
+                password=os.getenv("DB_PASSWORD")
             )
             self.cursor = self.conn.cursor()
             print("Connected to PostgreSQL")
